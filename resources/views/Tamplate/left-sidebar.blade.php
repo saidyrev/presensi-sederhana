@@ -23,29 +23,32 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Presensi
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
+               
+               @if (auth()->user()->level == "karyawan");
+               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="fa fa-inbox" aria-hidden="true"></i>
-                  <p>Presensi Masuk</p>
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Presensi
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Presensi Keluar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fa fa-inbox" aria-hidden="true"></i>
+                      <p>Presensi Masuk</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Presensi Keluar</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>  
+               @endif
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -55,6 +58,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            @if (auth()->user()->level == "karyawan");
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -62,13 +66,15 @@
                   <p>Presensi Karyawan</p>
                 </a>
               </li>
+              @endif
+              @if (auth()->user()->level == "admin");
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Presensi Keseluruhan</p>
                 </a>
               </li>
-
+              @endif
         </ul> 
           </li>
         <li class="nav-item">
